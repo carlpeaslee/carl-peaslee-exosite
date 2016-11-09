@@ -1,11 +1,8 @@
 import db from '../db'
-import BlogPost from './BlogPost'
+import Cart from './Cart'
 import Person from './Person'
-import TTTMove from './TTTMove'
-import TTTGuess from './TTTGuess'
-import Player from './Player'
-import Match from './Match'
-
+import Order from './Order'
+import Product from './Product'
 
 function sync(...args) {
   return db.sync(...args);

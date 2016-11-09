@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize'
 import {DBHost, DBUser, DBPw, DBName, DBSsl } from './dbconfig'
-
+import Product from './models/Product'
+import uuid from 'uuid-v4'
 
 const db = new Sequelize(DBName, DBUser, DBPw, {
   host: DBHost,

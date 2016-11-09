@@ -6,8 +6,8 @@ import cors from 'cors'
 import db from './data/db'
 import http from 'http'
 import SocketIO from 'socket.io'
-import uuid from 'uuid'
 
+import defaultProducts from './data/defaultProducts'
 
 const app = express()
 
@@ -42,25 +42,25 @@ var jwtCheck = jwt({
 })
 
 
+//
+// import PermissionsHandler from './data/mutations/PermissionsHandler'
+//
+// function permissionsMiddleware(req, res, next){
+//   if (!req.user) {
+//     req.permissions = [1]
+//     next()
+//   } else {
+//     const requesterId = req.user.sub
+//     PermissionsHandler(requesterId).then( (person) => {
+//       req.permissions = person.permissions
+//       next()
+//     })
+//   }
+// }
 
-import PermissionsHandler from './data/mutations/PermissionsHandler'
-
-function permissionsMiddleware(req, res, next){
-  if (!req.user) {
-    req.permissions = [1]
-    next()
-  } else {
-    const requesterId = req.user.sub
-    PermissionsHandler(requesterId).then( (person) => {
-      req.permissions = person.permissions
-      next()
-    })
-  }
-}
 
 
-
-app.use('/graphql', [cors(corsOptions), jwtCheck, permissionsMiddleware], expressGraphQL((req) => {
+app.use('/graphql', [cors(corsOptions)], expressGraphQL((req) => {
   return {
     schema,
     graphiql: true,
@@ -77,6 +77,7 @@ db
   .sync()
   .then(function(err) {
     console.log('It worked!')
+    defaultProducts()
   }, function (err) {
     console.log('An error occurred while creating the table:', err)
   })

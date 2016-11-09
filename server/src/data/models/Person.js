@@ -1,13 +1,17 @@
 import sequelize from 'sequelize';
 import db from '../db';
 
-const Person = db.define('Person', {
+const Person = db.define('person', {
 
   personId: {
-    type: sequelize.STRING,
+    type: sequelize.UUID,
     primaryKey: true,
-    notNull: true,
+    default: Sequelize.UUIDV4,
   },
+
+  auth0Id: {
+    type: sequelize.STRING,
+  }
 
   email: {
     type: sequelize.STRING,
@@ -20,11 +24,6 @@ const Person = db.define('Person', {
     notNull: true,
   },
 
-  permissions: {
-    type: sequelize.ARRAY(sequelize.INTEGER),
-    defaultValue: [1],
-    notNull: true,
-  },
 
 });
 

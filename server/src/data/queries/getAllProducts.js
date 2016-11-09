@@ -10,16 +10,16 @@ import {
   GraphQLInteger
 } from 'graphql';
 
-import BlogPost from '../models/BlogPost'
-import BlogPostType from '../types/BlogPostType'
+import Product from '../models/Product'
+import ProductType from '../types/ProductType'
 
 
-const getAllBlogPosts = {
-  type: new GraphQLList(BlogPostType),
+const getAllProducts = {
+  type: new GraphQLList(ProductType),
   resolve:  (source, args, context) => {
-    console.log('getAllBlogPosts context.permissions', context.permissions)
+    console.log('getAllProducts')
     return new Promise( (resolve, reject) => {
-      BlogPost.findAll().then( (result, error) => {
+      Product.findAll().then( (result, error) => {
         if (error) console.log(error)
         resolve(result)
       })
@@ -28,4 +28,4 @@ const getAllBlogPosts = {
 }
 
 
-export default getAllBlogPosts
+export default getAllProducts
