@@ -1,0 +1,11 @@
+{
+  "name": "carl-exosite",
+  "version": "1.0.0",
+  "description": "a code challenge for exosite using react, redux, redux-sage, material-ui, node, graphql, and postgres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carl peaslee",
+  "license": "ISC"
+}
