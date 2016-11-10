@@ -1,11 +1,10 @@
 import React from 'react'
-import AllProducts from '../../components/Market/AllProducts'
+import MarketContainer from '../../containers/MarketContainer'
 
 function Market () {
   return (
     <section>
-      <h1>Market</h1>
-      <AllProducts/>
+      <MarketContainer/>
     </section>
   )
 }

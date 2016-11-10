@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Product from './Product'
 
 import S from '../../styles/S'
@@ -6,23 +6,43 @@ import S from '../../styles/S'
 const baseStyles = {
   display: 'flex',
   width: '66%',
-  alignItems: 'center',
+  alignItems: 'stretch',
   justifyItems: 'center',
   margin: 'auto'
 }
 
 const styles = new S(baseStyles)
 
-function AllProducts () {
-  return (
-    <div
-      style={{...styles.all}}
-    >
-      <Product/>
-      <Product/>
-      <Product/>
-    </div>
-  )
+class AllProducts extends Component {
+
+
+  populateProductList() {
+    if(this.props.products) {
+      const products = []
+      this.props.products.forEach((product)=>{
+        console.log(product)
+        products.push(
+          <Product
+            key={product.productId}
+            title={product.title}
+            price={product.price}
+            description={product.description}
+            features={product.features}
+          />
+        )
+      })
+      return products
+    }
+  }
+  render() {
+    return (
+      <div
+        style={{...styles.all}}
+      >
+        {this.populateProductList()}
+      </div>
+    )
+  }
 }
 
 export default AllProducts
