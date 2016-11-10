@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-//import '../../styles/body.css'
-//import '../../styles/index.scss'
+import '../../styles/exoStyles.css'
+// import '../../styles/index.scss'
 
 
 import {openDrawer, closeDrawer} from '../../actions/ui'
@@ -25,18 +25,31 @@ class Template extends Component {
           />
 
         </header>
-        <nav>
+        <div
+          className={'flex--direction-row flex--shrink-0'}
+        >
+        <nav
+          className={' util__layout--container-x-small flex--direction-column flex--shrink-0'}
+        >
           <NavDrawer
             closeDrawer={this.props.closeDrawer}
             drawerOpen={this.props.drawerOpen}
           />
         </nav>
 
+        <div
+          className={'util__p-vertical--medium util__layout--scrollable-y flex--direction-column flex--grow-1'}
+        >
 
-        <main>
+        </div>
+        <main
+          className={'util__layout--container'}
+        >
           {this.props.children}
         </main>
       </div>
+        </div>
+
     );
   }
 }

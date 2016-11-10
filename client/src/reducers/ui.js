@@ -1,6 +1,11 @@
 import {CLOSE_DRAWER, OPEN_DRAWER, HOVER_ELEMENT, UNHOVER_ELEMENT, DUPLICATE_HOVER} from '../actions/ui'
 
-function ui(state = {hoverElements: [],}, action) {
+const INITIAL_STATE = {
+  hoverElements: [],
+  drawerOpen: true
+}
+
+function ui(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CLOSE_DRAWER: {
       return {

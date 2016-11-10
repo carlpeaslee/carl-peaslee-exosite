@@ -42,6 +42,7 @@ class TopAppBar extends Component {
           style={{
             backgroundColor: 'rgb(34, 39, 54)'
           }}
+          
         />
     )
   }

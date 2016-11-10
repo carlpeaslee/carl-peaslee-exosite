@@ -20,7 +20,6 @@ class AllProducts extends Component {
     if(this.props.products) {
       const products = []
       this.props.products.forEach((product)=>{
-        console.log(product)
         products.push(
           <Product
             key={product.productId}
