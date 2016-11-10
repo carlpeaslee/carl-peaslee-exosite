@@ -5,7 +5,7 @@ import '../../styles/exoStyles.css'
 // import '../../styles/index.scss'
 
 
-import {openDrawer, closeDrawer} from '../../actions/ui'
+import {openDrawer, closeDrawer, openCart, closeCart} from '../../actions/ui'
 
 import DevTools from '../DevTools'
 
@@ -22,6 +22,10 @@ class Template extends Component {
             openDrawer={this.props.openDrawer}
             closeDrawer={this.props.closeDrawer}
             drawerOpen={this.props.drawerOpen}
+            cartOpen={this.props.cartOpen}
+            openCart={this.props.openCart}
+            closeCart={this.props.closeCart}
+            cart={this.props.cart}
           />
 
         </header>
@@ -57,6 +61,8 @@ class Template extends Component {
 const mapStateToProps = (state) => {
   return {
     drawerOpen: state.ui.drawerOpen,
+    cartOpen: state.ui.cartOpen,
+    cart: state.market.cart
   }
 }
 
@@ -67,6 +73,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     closeDrawer: () => {
       dispatch(closeDrawer())
+    },
+    openCart: () => {
+      dispatch(openCart())
+    },
+    closeCart: () => {
+      dispatch(closeCart())
     },
   }
 }

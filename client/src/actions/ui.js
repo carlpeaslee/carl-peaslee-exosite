@@ -14,6 +14,21 @@ export function openDrawer() {
   }
 }
 
+
+export const CLOSE_CART = "CLOSE_CART"
+export function closeCart() {
+  return {
+    type: CLOSE_CART,
+  }
+}
+
+export const OPEN_CART = "OPEN_CART"
+export function openCart() {
+  return {
+    type: OPEN_CART,
+  }
+}
+
 export const DUPLICATE_HOVER = "DUPLICATE_HOVER"
 
 

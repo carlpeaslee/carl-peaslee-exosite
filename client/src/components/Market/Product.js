@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import booya from '../../styles/booya.png'
+import AddToCartButton from './AddToCartButton'
+
+
 
 class Product extends Component {
 
@@ -7,7 +10,7 @@ class Product extends Component {
     if (this.props.features) {
       const features = this.props.features
       const featureList = []
-      let featureKey = 0
+      let featureKey = 0  // eslint-disable-next-line
       for (const feature in features) {
         featureList.push(
           <li
@@ -80,14 +83,11 @@ class Product extends Component {
           {this.displayFeatures()}
         </div>
 
-        <button
-          style={{
-            display: 'flex',
-            alignSelf: 'flex-end'
-          }}
-        >
-        Add to Cart
-        </button>
+        <AddToCartButton
+          addProductToCart={this.props.addProductToCart}
+          product={this.props.product}
+          openCart={this.props.openCart}
+        />
       </div>
     )
   }

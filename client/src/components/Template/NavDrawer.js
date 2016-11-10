@@ -4,10 +4,10 @@ import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 
 import ActionHome from 'material-ui/svg-icons/action/home'
-import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart'
+import Shop from 'material-ui/svg-icons/action/store'
 import HelpOutline from 'material-ui/svg-icons/action/help-outline'
 
-import {Link, IndexLink} from 'react-router'
+import {Link} from 'react-router'
 
 const menuItemStyle = {
   border: '10px',
@@ -98,7 +98,7 @@ class NavDrawer extends Component {
               fontSize: 'inherit'
             }}
             leftIcon={
-              <ShoppingCart
+              <Shop
                 style={{
                   fill: 'inherit'
                 }}

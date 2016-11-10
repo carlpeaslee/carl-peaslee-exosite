@@ -23,10 +23,13 @@ class AllProducts extends Component {
         products.push(
           <Product
             key={product.productId}
+            product={product}
             title={product.title}
             price={product.price}
             description={product.description}
             features={product.features}
+            addProductToCart={this.props.addProductToCart}
+            openCart={this.props.openCart}
           />
         )
       })

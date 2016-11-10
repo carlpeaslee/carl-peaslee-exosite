@@ -6,17 +6,23 @@ import Template from '../containers/Template'
 import Home from '../views/Home'
 import Help from '../views/Help'
 import Market from '../views/Market'
+import Checkout from '../views/Checkout'
+
 
 export const createRoutes = () => {
   return (
     <Route path="/" component={Template}>
       <IndexRoute component={Home} />
       <Route
-        path="/market"
+        path="market"
         component={Market}
       />
       <Route
-        path="/help"
+        path='checkout'
+        component={Checkout}
+      />
+      <Route
+        path="help"
         component={Help}
       />
     </Route>

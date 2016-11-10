@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import {addProductToCart} from '../../actions/market'
-import {openCart} from '../../actions/ui'
+
+import ShoppingCart from '../../components/Market/ShoppingCart'
+import ShippingForm from '../../components/Market/ShippingForm'
 
 
-import AllProducts from '../../components/Market/AllProducts'
 
-class MarketContainer extends Component {
+class CheckoutContainer extends Component {
   render() {
     return (
       <div>
-        <AllProducts
-          products={this.props.products}
-          addProductToCart={this.props.addProductToCart}
-          openCart={this.props.openCart}
+        <h1>Checkout Container</h1>
+        <ShoppingCart
+          cart={this.props.cart}
+        />
+        <ShippingForm
+          cart={this.props.cart}
         />
       </div>
     );
@@ -33,15 +36,12 @@ const mapDispatchToProps = (dispatch) => {
     addProductToCart: (product) => {
       dispatch(addProductToCart(product))
     },
-    openCart: () => {
-      dispatch(openCart())
-    },
   }
 }
 
-MarketContainer = connect(
+CheckoutContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MarketContainer)
+)(CheckoutContainer)
 
-export default MarketContainer
+export default CheckoutContainer

@@ -1,4 +1,4 @@
-import {CLOSE_DRAWER, OPEN_DRAWER, HOVER_ELEMENT, UNHOVER_ELEMENT, DUPLICATE_HOVER} from '../actions/ui'
+import {CLOSE_DRAWER, OPEN_DRAWER, HOVER_ELEMENT, UNHOVER_ELEMENT, DUPLICATE_HOVER, CLOSE_CART, OPEN_CART} from '../actions/ui'
 
 const INITIAL_STATE = {
   hoverElements: [],
@@ -17,6 +17,18 @@ function ui(state = INITIAL_STATE, action) {
       return {
         ...state,
         drawerOpen: true,
+      }
+    }
+    case CLOSE_CART: {
+      return {
+        ...state,
+        cartOpen: false,
+      }
+    }
+    case OPEN_CART: {
+      return {
+        ...state,
+        cartOpen: true,
       }
     }
     case HOVER_ELEMENT: {
