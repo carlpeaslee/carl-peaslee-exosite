@@ -2,10 +2,12 @@ import React from 'react'
 import CheckoutContainer from '../../containers/CheckoutContainer'
 
 
-function Checkout () {
+function Checkout (props) {
   return (
     <section>
-      <CheckoutContainer/>
+      <CheckoutContainer
+        router={props.router}
+      />
     </section>
   )
 }

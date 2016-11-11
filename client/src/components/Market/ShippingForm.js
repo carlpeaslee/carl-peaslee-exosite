@@ -1,26 +1,32 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-//import states from '../../helpers/states'
+import states from '../../helpers/states'
 import RaisedButton from 'material-ui/RaisedButton'
-
-
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'name', 'street', 'city', 'state', 'zip' ]
+  const requiredFields = [ 'name', 'street', 'city', 'state', 'zipCode' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
     }
   })
+
+  const stateValue = values['state'] ? values['state'].toUpperCase() : null
+
+  const checkForMatch = (state) => {
+    return state == stateValue
+  }
+
+  if (states.find(checkForMatch) !== stateValue) {
+    errors['state'] = 'Invalid'
+  }
+
   return errors
 }
 
 const warn = values => {
   const warnings = {}
-  if (values.state > 3) {
-    warnings.age = 'just abbreviation pls'
-  }
   return warnings
 }
 
@@ -119,18 +125,23 @@ class ShippingForm extends Component {
   constructor(props) {
     super(props)
     this.requestNewOrder = this.props.requestNewOrder.bind(this)
+    this.redirect = this.props.router.push.bind(this)
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.confirmedOrder) {
+      this.redirect('receipt')
+    }
+  }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('handleSubmit')
     this.requestNewOrder()
   }
 
 
   render() {
-    //const { pristine, submitting } = this.props
+    console.log(this.props)
     return (
         <form
           onSubmit={this.handleSubmit}
@@ -173,6 +184,7 @@ class ShippingForm extends Component {
               width: '50%',
               marginTop: '15px'
             }}
+            disabled={(this.props.invalid && !this.props.submitting)}
           >
             Submit
           </RaisedButton>

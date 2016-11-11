@@ -1,3 +1,5 @@
+import {router} from 'react-router'
+
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 export function requestProducts() {
   return {
@@ -34,11 +36,11 @@ export function requestNewOrder() {
 }
 
 export const CONFIRM_NEW_ORDER = 'CONFIRM_NEW_ORDER'
-export function confirmNewOrder(order) {
-  console.log('confirmNewOrder action',order)
+export function confirmNewOrder(confirmedOrder) {
+  console.log('confirmNewOrder action',confirmedOrder)
   return {
     type: CONFIRM_NEW_ORDER,
-    confirmedOrder: order
+    confirmedOrder
   }
 }
 

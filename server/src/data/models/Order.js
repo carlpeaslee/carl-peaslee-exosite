@@ -23,7 +23,7 @@ const Order = db.define('order', {
     notNull: true,
   },
 
-  shipping: {
+  shippingRate: {
     type: sequelize.INTEGER,
     notNull: true,
   },

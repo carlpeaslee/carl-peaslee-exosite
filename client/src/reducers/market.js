@@ -23,7 +23,8 @@ function market(state = INITIAL_STATE, action) {
     case CONFIRM_NEW_ORDER: {
       return {
         ...state,
-        products: action.products
+        confirmedOrder: action.confirmedOrder,
+        cart: []
       }
     }
     case REQUEST_PRODUCTS: {

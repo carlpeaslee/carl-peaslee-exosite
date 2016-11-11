@@ -7,6 +7,7 @@ import {
   GraphQLInterfaceType,
   GraphQLList,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLInputObjectType
 } from 'graphql'
 
@@ -28,10 +29,10 @@ const newOrder = {
       type: GraphQLString
     },
     totalBeforeShipping: {
-      type: GraphQLInt
+      type: GraphQLFloat
     },
-    shipping: {
-      type: GraphQLInt
+    shippingRate: {
+      type: GraphQLFloat
     },
     shippingName: {
       type: GraphQLString
@@ -51,12 +52,12 @@ const newOrder = {
   },
   resolve: (source, args, context) => {
     console.log('newOrder')
-    Order.build({
+    return Order.build({
       orderId: uuid.v4(),
-      associatedPersonId: args.associatedPersonId,
+      associatedPersonId: args.associatedPersonId || uuid.v4(),
       products: args.products,
       totalBeforeShipping: args.totalBeforeShipping,
-      shipping: args.shipping,
+      shippingRate: args.shippingRate,
       shippingName: args.shippingName,
       street: args.street,
       city: args.city,
@@ -66,7 +67,7 @@ const newOrder = {
     .save()
     .then( (result) => {
       console.log('New Order added to db', result)
-      resolve(result)
+      return JSON.stringify(result.dataValues)
     })
     .catch( (error) => {
       console.log('newOrder error: \n', error)

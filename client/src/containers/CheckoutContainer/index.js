@@ -11,6 +11,7 @@ import OrderTotal from '../../components/Market/OrderTotal'
 
 
 class CheckoutContainer extends Component {
+
   render() {
     return (
       <div
@@ -41,7 +42,6 @@ class CheckoutContainer extends Component {
           />
           <OrderTotal
             cart={this.props.cart}
-            shippingRate={this.props.shippingRate}
           />
         </div>
 
@@ -58,6 +58,8 @@ class CheckoutContainer extends Component {
           <ShippingForm
             cart={this.props.cart}
             requestNewOrder={this.props.requestNewOrder}
+            confirmedOrder={this.props.confirmedOrder}
+            router={this.props.router}
           />
         </div>
       </div>
@@ -70,7 +72,8 @@ const mapStateToProps = (state) => {
     products: state.market.products,
     cart: state.market.cart,
     shippingValues: state.form.shipping.values,
-    shippingRate: state.market.shippingRate
+    shippingRate: state.market.shippingRate,
+    confirmedOrder: state.market.confirmedOrder
   }
 }
 

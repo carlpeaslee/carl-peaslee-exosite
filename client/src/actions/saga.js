@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 import {requestProducts, receiveProducts, confirmNewOrder} from './market'
 import { put, call } from 'redux-saga/effects'
 import { takeEvery } from 'redux-saga'
-
+import store from '../store'
 
 
 export function fetchProductsCall() {
@@ -28,23 +28,28 @@ export function* fetchProducts() {
 export function* newOrderCall() {
   console.log('newOrderCall')
   try {
-    // fetchOptions.body = JSON.stringify({
-    //   mutation:'{newOrder(
-    //     associatedPersonId: args.associatedPersonId,
-    //     products: args.products,
-    //     totalBeforeShipping: args.totalBeforeShipping,
-    //     shipping: args.shipping,
-    //     shippingName: args.shippingName,
-    //     street: args.street,
-    //     city: args.city,
-    //     state: args.state,
-    //     zipCode: args.zipCode,
-    // ){productId,title,price,description,features}}',
-    // })
+    const appState = store.getState()
+    const form = appState.form.shipping.values
+    const products = appState.market.cart
+    const totalBeforeShipping = () => {
+      let runningTotal = 0
+      products.forEach( (product)=> {
+        runningTotal += product.price
+      })
+      return runningTotal
+    }
+    const shippingRate = appState.market.shippingRate
+    const shippingName = form.name
+    const street = form.street
+    const city = form.city
+    const state = form.state
+    const zipCode = form.zipCode
+    fetchOptions.body = JSON.stringify({query:'mutation{newOrder(products:"'+products+'",totalBeforeShipping: '+totalBeforeShipping()+',shippingRate: '+shippingRate+',shippingName: "'+shippingName+'",street: "'+street+'",city: "'+city+'",state: "'+state+'",zipCode: "'+zipCode+'")}',
+    })
     const confirmedOrder = yield fetch(apiUrl, fetchOptions).then( (response) => {
       return response.json()
     }).then((json) => {
-        return json.data.getAllProducts
+        return JSON.parse(json.data.newOrder)
     })
     yield put(confirmNewOrder(confirmedOrder))
   } catch (error) {

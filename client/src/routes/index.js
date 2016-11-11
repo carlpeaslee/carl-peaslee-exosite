@@ -7,7 +7,7 @@ import Home from '../views/Home'
 import Help from '../views/Help'
 import Market from '../views/Market'
 import Checkout from '../views/Checkout'
-
+import Receipt from '../views/Receipt'
 
 export const createRoutes = () => {
   return (
@@ -24,6 +24,10 @@ export const createRoutes = () => {
       <Route
         path="help"
         component={Help}
+      />
+      <Route
+        path="receipt"
+        component={Receipt}
       />
     </Route>
   )
