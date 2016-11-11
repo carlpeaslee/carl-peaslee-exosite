@@ -45,7 +45,6 @@ class ShippingTotal extends Component {
           display: 'flex',
           flexDirection: 'column',
           height: '50px',
-          minWidth: '300px',
           margin: '30px',
           marginBottom: '5px'
         }}

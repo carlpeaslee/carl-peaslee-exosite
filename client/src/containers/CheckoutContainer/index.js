@@ -3,12 +3,24 @@ import {connect} from 'react-redux'
 
 import {addProductToCart, requestNewOrder, setShippingRate} from '../../actions/market'
 
-import ShoppingCart from '../../components/Market/ShoppingCart'
-import ShippingTotal from '../../components/Market/ShippingTotal'
+import CheckoutTotalsList from '../../components/Market/CheckoutTotalsList'
 import ShippingForm from '../../components/Market/ShippingForm'
-import OrderTotal from '../../components/Market/OrderTotal'
 
+import S from '../../styles/S'
 
+const containerBase = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%'
+}
+const containerMobile = {
+  flexDirection: 'column',
+  margin: 'auto'
+}
+
+const containerStyle = new S(containerBase, {}, containerMobile)
 
 class CheckoutContainer extends Component {
 
@@ -16,52 +28,23 @@ class CheckoutContainer extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          margin: '60px',
-          alignItems: 'center'
+          ...containerStyle.all
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '40%',
-            margin: '20px',
-            backgroundColor: 'rgba(255,255,255, .8)',
-            borderRadius: '10px',
-          }}
-        >
-          <ShoppingCart
-            cart={this.props.cart}
-          />
-          <ShippingTotal
-            shippingValues={this.props.shippingValues}
-            setShippingRate={this.props.setShippingRate}
-          />
-          <OrderTotal
-            cart={this.props.cart}
-          />
-        </div>
+        <CheckoutTotalsList
+          cart={this.props.cart}
+          shippingValues={this.props.shippingValues}
+          setShippingRate={this.props.setShippingRate}
+        />
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            width: '50%',
-            margin: '20px',
-            backgroundColor: 'rgba(255,255,255, .8)',
-            borderRadius: '10px',
-          }}
-        >
-          <ShippingForm
-            cart={this.props.cart}
-            requestNewOrder={this.props.requestNewOrder}
-            confirmedOrder={this.props.confirmedOrder}
-            router={this.props.router}
-          />
-        </div>
+
+        <ShippingForm
+          cart={this.props.cart}
+          requestNewOrder={this.props.requestNewOrder}
+          confirmedOrder={this.props.confirmedOrder}
+          router={this.props.router}
+        />
+
       </div>
     );
   }

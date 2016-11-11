@@ -53,9 +53,7 @@ class Template extends Component {
         >
           <nav
             className={' util__layout--container-x-small flex--direction-column flex--shrink-0'}
-            style={{
-              ...navStyle.all
-            }}
+            style={this.props.drawerOpen ? {...navStyle.all} : {display: 'none'} }
           >
             <NavDrawer
               closeDrawer={this.props.closeDrawer}

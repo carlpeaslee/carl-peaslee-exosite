@@ -143,6 +143,16 @@ class ShippingForm extends Component {
   render() {
     console.log(this.props)
     return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          maxWidth: '100%',
+          margin: '20px',
+          backgroundColor: 'rgba(255,255,255, .8)',
+          borderRadius: '10px',
+        }}
+      >
         <form
           onSubmit={this.handleSubmit}
           style={{
@@ -190,6 +200,7 @@ class ShippingForm extends Component {
           </RaisedButton>
 
         </form>
+        </div>
     );
   }
 }

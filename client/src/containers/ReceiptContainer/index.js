@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import S from '../../styles/S'
 
+
+const base = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  margin: '60px',
+  alignItems: 'center',
+}
+const mobile = {
+  height: '100%',
+  margin: '20px'
+}
+
+const style = new S(base, {}, mobile)
 
 class ReceiptContainer extends Component {
 
@@ -8,18 +23,14 @@ class ReceiptContainer extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          margin: '60px',
-          alignItems: 'center'
+          ...style.all
         }}
       >
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            width: '80%',
+            width: '100%',
             margin: '20px',
             backgroundColor: 'rgba(255,255,255, .8)',
             borderRadius: '10px',

@@ -36,7 +36,6 @@ class OrderTotal extends Component {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          minWidth: '300px',
           margin: '30px',
           marginTop: '15px'
 

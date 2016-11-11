@@ -1,5 +1,23 @@
 import React, {Component} from 'react'
 
+
+import S from '../../styles/S'
+
+const cartBase = {
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '300px',
+  maxWidth: '100%',
+  minWidth: '20%',
+  margin: '30px',
+  marginBottom: '5px'
+}
+const cartMobile = {
+
+}
+
+const cartStyle = new S(cartBase, {}, cartMobile)
+
 class ShoppingCart extends Component {
   constructor(props) {
     super(props)
@@ -56,12 +74,7 @@ class ShoppingCart extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '400px',
-          minWidth: '300px',
-          margin: '30px',
-          marginBottom: '5px'
+          ...cartStyle.all
         }}
       >
         <div

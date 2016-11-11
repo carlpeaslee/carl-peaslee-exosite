@@ -17,7 +17,7 @@ const navBase = {
 const navMobile = {
   backgroundColor: 'rgba(220,220,220,.9)',
   borderRight: 'ridge lightgrey 2px',
-  height: '90vh',
+  height: '100vh',
 }
 
 const navStyle = new S(navBase, {}, navMobile)
@@ -36,6 +36,8 @@ class NavDrawer extends Component {
           display: 'none'
         }}
         containerClassName={'menu'}
+        style={this.props.drawerOpen ? {} : {display: 'none'}
+        }
       >
         <div
           className={'menu__menu-item'}

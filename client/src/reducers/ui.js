@@ -2,7 +2,7 @@ import {CLOSE_DRAWER, OPEN_DRAWER, HOVER_ELEMENT, UNHOVER_ELEMENT, DUPLICATE_HOV
 
 const INITIAL_STATE = {
   hoverElements: [],
-  drawerOpen: true
+  drawerOpen: (window.innerWidth > 800 )
 }
 
 function ui(state = INITIAL_STATE, action) {
