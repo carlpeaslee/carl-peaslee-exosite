@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import booya from '../../styles/booya.png'
 import AddToCartButton from './AddToCartButton'
 
@@ -8,7 +8,7 @@ const baseStyles = {
   display: 'flex',
   flexDirection: 'column',
   maxWidth: '33%',
-  height: '400px',
+  minHeight: '400px',
   margin: '10px',
   backgroundColor: 'rgba(255,255,255, .8)',
   borderRadius: '10px',
@@ -25,6 +25,15 @@ const mobileStyles = {
 const productStyles = new S(baseStyles, {}, mobileStyles)
 
 class Product extends Component {
+
+  static propTypes = {
+    product: PropTypes.object.isRequired,
+    addProductToCart: PropTypes.func.isRequired,
+    openCart: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    features: PropTypes.object.isRequired,
+  }
 
   displayFeatures() {
     if (this.props.features) {
@@ -67,28 +76,21 @@ class Product extends Component {
             display: 'flex',
             flexDirection: 'column',
             padding: '8px',
-            marginBottom: 'auto'
+            marginBottom: 'auto',
+            minHeight: '180px'
           }}
         >
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
             }}
           >
-            <h2
-            style={{
-              margin: '3px'
-            }}
-            >
+            <h2>
               {this.props.title}
             </h2>
-            <h3
-              style={{
-                margin: '3px'
-              }}
-            >
+            <h3>
               {'$'+this.props.price.toFixed(2)}
             </h3>
           </div>
@@ -98,12 +100,17 @@ class Product extends Component {
 
           {this.displayFeatures()}
         </div>
-
-        <AddToCartButton
-          addProductToCart={this.props.addProductToCart}
-          product={this.props.product}
-          openCart={this.props.openCart}
-        />
+        <div
+          // style={{
+          //   height: '20%'
+          // }}
+        >
+          <AddToCartButton
+            addProductToCart={this.props.addProductToCart}
+            product={this.props.product}
+            openCart={this.props.openCart}
+          />
+        </div>
       </div>
     )
   }

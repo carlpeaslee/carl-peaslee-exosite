@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import ShoppingCart from './ShoppingCart'
 import ShippingTotal from './ShippingTotal'
@@ -23,6 +23,11 @@ const listStyle = new S(listBase, {}, listMobile)
 
 
 class CheckoutTotalsList extends Component {
+
+  static PropTypes = {
+    cart: PropTypes.array.isRequired,
+    setShippingRate: PropTypes.func.isRequired
+  }
 
   render() {
     return (

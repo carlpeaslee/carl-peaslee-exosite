@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Product from './Product'
 
 import S from '../../styles/S'
@@ -20,7 +20,15 @@ const styles = new S(baseStyles, {}, mobileStyles)
 
 class AllProducts extends Component {
 
+  static defaultProps = {
+    products: []
+  }
 
+  static propTypes = {
+    products: PropTypes.array.isRequired,
+    addProductToCart: PropTypes.func.isRequired,
+    openCart: PropTypes.func.isRequired,
+  }
   populateProductList() {
     if(this.props.products) {
       const products = []

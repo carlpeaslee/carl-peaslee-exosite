@@ -7,7 +7,9 @@ const AddToCartButton = (props) => {
     <RaisedButton
       label="Add to Cart"
       secondary={true}
-      style={{color: 'white'}}
+      style={{
+        display: 'flex'
+      }}
       onTouchTap={()=>{
         props.addProductToCart(props.product)
         props.openCart()
