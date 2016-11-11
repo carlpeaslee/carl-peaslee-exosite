@@ -5,13 +5,18 @@ import S from '../../styles/S'
 
 const baseStyles = {
   display: 'flex',
-  width: '66%',
   alignItems: 'stretch',
   justifyItems: 'center',
+  flexDirection: 'row',
+  margin: '100px'
+}
+
+const mobileStyles = {
+  flexDirection: 'column',
   margin: 'auto'
 }
 
-const styles = new S(baseStyles)
+const styles = new S(baseStyles, {}, mobileStyles)
 
 class AllProducts extends Component {
 

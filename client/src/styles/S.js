@@ -29,6 +29,13 @@ class S {
 
   get all() {
 
+    if (window.innerWidth < 800) {
+      return {
+        ...this.base,
+        ...this.mobile
+      }
+    }
+
     const currentHoverElements = store.getState().ui.hoverElements
     const checkForElement = (existing, index, array) => {
       if(existing === this.element) {

@@ -1,5 +1,3 @@
-import {router} from 'react-router'
-
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 export function requestProducts() {
   return {

@@ -14,7 +14,7 @@ const validate = values => {
 
   const stateValue = values['state'] ? values['state'].toUpperCase() : null
 
-  const checkForMatch = (state) => {
+  const checkForMatch = (state) => { // eslint-disable-next-line
     return state == stateValue
   }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import S from '../../styles/S'
+
 
 import '../../styles/exoStyles.css'
 
@@ -10,11 +12,31 @@ import DevTools from '../DevTools'
 import NavDrawer from '../../components/Template/NavDrawer'
 import TopAppBar from '../../components/Template/TopAppBar'
 
+const mainBase = {
+  marginLeft: '260px',
+  width: '100%',
+}
+const mainMobile = {
+  marginLeft: '0px'
+}
+
+const mainStyle = new S(mainBase, {}, mainMobile)
+
+const navBase = {
+  position: 'absolute'
+}
+const navMobile = {
+  height: '100%',
+}
+
+const navStyle = new S(navBase, {}, navMobile)
+
 class Template extends Component {
+
   render() {
     return (
       <div>
-      <DevTools/>
+        <DevTools/>
         <header>
           <TopAppBar
             openDrawer={this.props.openDrawer}
@@ -25,33 +47,33 @@ class Template extends Component {
             closeCart={this.props.closeCart}
             cart={this.props.cart}
           />
-
         </header>
         <div
           className={'flex--direction-row flex--shrink-0'}
         >
-        <nav
-          className={' util__layout--container-x-small flex--direction-column flex--shrink-0'}
-        >
-          <NavDrawer
-            closeDrawer={this.props.closeDrawer}
-            drawerOpen={this.props.drawerOpen}
-          />
-        </nav>
+          <nav
+            className={' util__layout--container-x-small flex--direction-column flex--shrink-0'}
+            style={{
+              ...navStyle.all
+            }}
+          >
+            <NavDrawer
+              closeDrawer={this.props.closeDrawer}
+              drawerOpen={this.props.drawerOpen}
+            />
+          </nav>
 
-        <div
-          className={'util__p-vertical--medium util__layout--scrollable-y flex--direction-column flex--grow-1'}
-        >
+          <main
+            style={{
+              ...mainStyle.all
+            }}
+          >
 
+            {this.props.children}
+
+          </main>
         </div>
-        <main
-          className={'util__layout--container'}
-        >
-          {this.props.children}
-        </main>
       </div>
-        </div>
-
     );
   }
 }

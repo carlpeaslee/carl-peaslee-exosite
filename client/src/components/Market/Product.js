@@ -2,7 +2,27 @@ import React, {Component} from 'react'
 import booya from '../../styles/booya.png'
 import AddToCartButton from './AddToCartButton'
 
+import S from '../../styles/S'
 
+const baseStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  maxWidth: '33%',
+  height: '400px',
+  margin: '10px',
+  backgroundColor: 'rgba(255,255,255, .8)',
+  borderRadius: '10px',
+  overflow: 'hidden',
+}
+
+const mobileStyles = {
+  maxWidth: '70%',
+  margin: 'auto',
+  marginTop: '15px',
+  marginBottom: '15px'
+}
+
+const productStyles = new S(baseStyles, {}, mobileStyles)
 
 class Product extends Component {
 
@@ -30,14 +50,7 @@ class Product extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          maxWidth: '33%',
-          height: '400px',
-          margin: '10px',
-          backgroundColor: 'rgba(255,255,255, .8)',
-          borderRadius: '10px',
-          overflow: 'hidden',
+          ...productStyles.all
         }}
       >
         <img

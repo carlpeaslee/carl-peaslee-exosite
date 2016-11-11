@@ -27,7 +27,8 @@ class ReceiptContainer extends Component {
         >
 
           <h3>Order Confirmed</h3>
-          <h4>Thanks {this.props.confirmedOrder.shippingName}, your order number is {this.props.confirmedOrder.orderId}</h4>
+          <h4>Thanks {this.props.confirmedOrder.shippingName}!</h4>
+           <p>Your order number is {this.props.confirmedOrder.orderId}</p>
         </div>
       </div>
     );
