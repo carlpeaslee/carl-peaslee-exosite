@@ -10,7 +10,7 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'The root query',
   fields: {
-    getAllProducts
+    getAllProducts: getAllProducts
   }
 })
 

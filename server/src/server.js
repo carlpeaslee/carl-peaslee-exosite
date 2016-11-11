@@ -23,7 +23,7 @@ app.all('*', function(req, res, next) {
 
 const corsOptions = {
   origin: true,
-  credentials: true
+  //credentials: true
 }
 
 

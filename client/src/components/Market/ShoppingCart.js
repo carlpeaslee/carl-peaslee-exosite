@@ -11,11 +11,13 @@ class ShoppingCart extends Component {
       const cart = this.props.cart
       cart.forEach( (product)=> {
         this.cartSubtotal += product.price
-        console.log('subtotal', this.cartSubtotal)
       })
-      console.log('subtotal', this.cartSubtotal)
       return this.cartSubtotal
     }
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    this.cartSubtotal = 0
   }
 
 
@@ -38,7 +40,7 @@ class ShoppingCart extends Component {
             }}
           >
             <b>{product.title}</b>
-            <span>{'$ ' + product.price}</span>
+            <span>{'$ ' + product.price.toFixed(2)}</span>
           </div>
         )
         cartKey++
@@ -58,7 +60,7 @@ class ShoppingCart extends Component {
           flexDirection: 'column',
           height: '400px',
           minWidth: '300px',
-          margin: '20px',
+          margin: '30px',
           marginBottom: '5px'
         }}
       >
@@ -92,11 +94,10 @@ class ShoppingCart extends Component {
         </div>
         <h4
           style={{
-            margin: '3px',
             alignSelf: 'flex-end'
           }}
         >
-          {'Current Total: $'+this.currentCartSubtotal}
+          {'Subtotal: $'+this.currentCartSubtotal.toFixed(2)}
         </h4>
       </div>
     )

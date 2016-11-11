@@ -13,7 +13,7 @@ import {
 import Order from '../models/Order'
 import ProductType from '../types/ProductType'
 import OrderType from '../types/OrderType'
-
+import uuid from 'uuid'
 
 const newOrder = {
   type: GraphQLString,
@@ -52,7 +52,7 @@ const newOrder = {
   resolve: (source, args, context) => {
     console.log('newOrder')
     Order.build({
-      orderId: args.orderId,
+      orderId: uuid.v4(),
       associatedPersonId: args.associatedPersonId,
       products: args.products,
       totalBeforeShipping: args.totalBeforeShipping,

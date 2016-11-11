@@ -1,4 +1,4 @@
-import {ADD_PRODUCT_TO_CART} from '../actions/market'
+import {ADD_PRODUCT_TO_CART, REQUEST_NEW_ORDER, CONFIRM_NEW_ORDER, SET_SHIPPING_RATE} from '../actions/market'
 
 const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
@@ -9,6 +9,23 @@ const INITIAL_STATE = {
 
 function market(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case SET_SHIPPING_RATE: {
+      return {
+        ...state,
+        shippingRate: action.shippingRate
+      }
+    }
+    case REQUEST_NEW_ORDER: {
+      return {
+        ...state,
+      }
+    }
+    case CONFIRM_NEW_ORDER: {
+      return {
+        ...state,
+        products: action.products
+      }
+    }
     case REQUEST_PRODUCTS: {
       return {
         ...state,

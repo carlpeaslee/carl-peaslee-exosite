@@ -2,7 +2,10 @@ import {
   GraphQLID,
   GraphQLString,
   GraphQLInt,
-  GraphQLObjectType
+  GraphQLObjectType,
+  GraphQLUnionType,
+  GraphQLOutputType,
+  GraphQLList
 } from 'graphql'
 
 
@@ -27,5 +30,6 @@ const ProductType = new GraphQLObjectType({
     },
   }
 })
+
 
 export default ProductType

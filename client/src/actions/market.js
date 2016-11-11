@@ -23,3 +23,29 @@ export function addProductToCart(product){
     product
   }
 }
+
+
+export const REQUEST_NEW_ORDER = 'REQUEST_NEW_ORDER'
+export function requestNewOrder() {
+  console.log('requestNewOrder action')
+  return {
+    type: REQUEST_NEW_ORDER,
+  }
+}
+
+export const CONFIRM_NEW_ORDER = 'CONFIRM_NEW_ORDER'
+export function confirmNewOrder(order) {
+  console.log('confirmNewOrder action',order)
+  return {
+    type: CONFIRM_NEW_ORDER,
+    confirmedOrder: order
+  }
+}
+
+export const SET_SHIPPING_RATE = 'SET_SHIPPING_RATE'
+export function setShippingRate(shippingRate) {
+  return {
+    type: SET_SHIPPING_RATE,
+    shippingRate
+  }
+}

@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import '../../styles/exoStyles.css'
-// import '../../styles/index.scss'
-
 
 import {openDrawer, closeDrawer, openCart, closeCart} from '../../actions/ui'
 

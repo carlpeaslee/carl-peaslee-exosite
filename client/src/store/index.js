@@ -8,6 +8,16 @@ import {rootSaga} from '../actions/saga'
 const sagaMiddleware = createSagaMiddleware()
 
 
+const INITIAL_STATE = {
+  form: {
+    shipping: {
+      values: {
+        state: null
+      }
+    }
+  }
+}
+
 const enhancer = compose(
   // Middleware you want to use in development:
   applyMiddleware(sagaMiddleware),
@@ -15,10 +25,10 @@ const enhancer = compose(
   DevTools.instrument()
 );
 
-const configureStore = (initialState) => {
+const configureStore = () => {
   // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
   // See https://github.com/rackt/redux/releases/tag/v3.1.0
-  const store = createStore(reducers, initialState, enhancer)
+  const store = createStore(reducers, INITIAL_STATE, enhancer)
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {

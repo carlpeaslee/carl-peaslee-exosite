@@ -34,7 +34,10 @@ class Product extends Component {
           flexDirection: 'column',
           maxWidth: '33%',
           height: '400px',
-          margin: '10px'
+          margin: '10px',
+          backgroundColor: 'rgba(255,255,255, .8)',
+          borderRadius: '10px',
+          overflow: 'hidden',
         }}
       >
         <img
@@ -50,7 +53,7 @@ class Product extends Component {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            padding: '5px',
+            padding: '8px',
             marginBottom: 'auto'
           }}
         >
@@ -73,7 +76,7 @@ class Product extends Component {
                 margin: '3px'
               }}
             >
-              {'$'+this.props.price}
+              {'$'+this.props.price.toFixed(2)}
             </h3>
           </div>
           <i>

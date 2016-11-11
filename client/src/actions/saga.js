@@ -1,7 +1,9 @@
 import {apiUrl, fetchOptions} from '../utils/fetch'
 import fetch from 'isomorphic-fetch'
-import {requestProducts, receiveProducts, requestNewOrder, confirmNewOrder} from './market'
+import {requestProducts, receiveProducts, confirmNewOrder} from './market'
 import { put, call } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga'
+
 
 
 export function fetchProductsCall() {
@@ -12,9 +14,10 @@ export function fetchProductsCall() {
     return response.json()
   }).then((json) => {
       return json.data.getAllProducts
-    })
+  })
 
 }
+
 
 export function* fetchProducts() {
   yield put( requestProducts() )
@@ -22,23 +25,40 @@ export function* fetchProducts() {
   yield put( receiveProducts(products) )
 }
 
-export function newOrderCall() {
-  fetchOptions.body = JSON.stringify({
-    query:'{newOrder{productId,title,price,description,features}}',
-  })
-  return fetch(apiUrl, fetchOptions).then( (response) => {
-    return response.json()
-  }).then((json) => {
-      return json.data.getAllProducts
+export function* newOrderCall() {
+  console.log('newOrderCall')
+  try {
+    // fetchOptions.body = JSON.stringify({
+    //   mutation:'{newOrder(
+    //     associatedPersonId: args.associatedPersonId,
+    //     products: args.products,
+    //     totalBeforeShipping: args.totalBeforeShipping,
+    //     shipping: args.shipping,
+    //     shippingName: args.shippingName,
+    //     street: args.street,
+    //     city: args.city,
+    //     state: args.state,
+    //     zipCode: args.zipCode,
+    // ){productId,title,price,description,features}}',
+    // })
+    const confirmedOrder = yield fetch(apiUrl, fetchOptions).then( (response) => {
+      return response.json()
+    }).then((json) => {
+        return json.data.getAllProducts
     })
-
+    yield put(confirmNewOrder(confirmedOrder))
+  } catch (error) {
+    console.log('error', error)
+  }
 }
+
+
 
 export function* newOrder() {
-  yield put( requestNewOrder() )
-  const result = yield call(newOrderCall)
-  yield put( confirmNewOrder(result) )
+  yield* takeEvery("REQUEST_NEW_ORDER", newOrderCall);
 }
+
+
 
 
 export function* startup() {
@@ -48,6 +68,7 @@ export function* startup() {
 
 export function* rootSaga() {
   yield [
-    fetchProducts()
+    fetchProducts(),
+    newOrder()
   ]
 }

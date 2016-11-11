@@ -87,7 +87,9 @@ class TopAppBar extends Component {
                     marginBottom: '5px'
                   }}
                 >
-                  <CheckoutButton/>
+                  <CheckoutButton
+                    closeCart={this.props.closeCart}
+                  />
                 </div>
               </Popover>
             </div>
