@@ -11,7 +11,7 @@ const Person = db.define('person', {
 
   auth0Id: {
     type: sequelize.STRING,
-  }
+  },
 
   email: {
     type: sequelize.STRING,
