@@ -5,7 +5,7 @@ The application loads products from a database asynchronously using redux-saga. 
 
 ## Live Site
 
-Live Version [carl-exosite-client](https://carl-exosite-client.herokuapp.com/)
+Live: [carl-exosite-client](https://carl-exosite-client.herokuapp.com/)
 
 API: [carl-exosite-api](https://carl-exosite-api.herokuapp.com/graphql)
 
