@@ -29,3 +29,41 @@ If you want to run the server on your machine you'll need to make sure that you 
 * graphql
 * scss (exosite's stylesheet)
 * postgres
+
+
+## Project Structure
+Here is an overview of the project's structure. In general, the interesting things are in the components, containers, and actions directories.
+
+The app is being mounted from the ```client/src/index.js``` page. Most of the data is being connected through containers and each of the views (```client/src/views```) are being supplied as children in the template container.  
+
+```
+root
+  /client
+    /config
+    /public
+    /scripts
+    /src
+      /actions   <-- redux actions
+      /components   <-- the components you see on the page
+      /containers  <-- where we connect material ui, our redux store, styles, routing etc.
+      /helpers   <-- this is kind of a sad, mostly empty file right now
+      /reducers  <-- where our redux reducers live
+      /routes  <-- where we handling the logic for our client-side routing
+      /store  <-- the configuration information
+      /styles <-- where the stylesheet is being kept, also my styling class object, a custom theme should be in here too probably...
+      /utils <-- some configurations for fetching
+      /views <--the views that are being rendered as children of the router
+      index.js
+
+  /server
+    /src
+      /data
+        /models
+        /mutations
+        /queries
+        /types
+        db.js
+        dbconfig.js
+        defaultProducts.js
+        schema.js
+      server.js
