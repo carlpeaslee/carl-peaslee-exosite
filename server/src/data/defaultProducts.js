@@ -9,9 +9,9 @@ const defaultProducts = () => {
     defaults: {
       productId: uuid.v4(),
       price: 9.89,
-      description: 'Awesome',
+      description: 'One of the best Widgets in the industry right now.',
       features: {
-        cool: 'definitely'
+        Size: 'Medium'
       }
     }
   }).then( (instance, created) => {
@@ -25,10 +25,10 @@ const defaultProducts = () => {
     defaults: {
       productId: uuid.v4(),
       price: 12.66,
-      description: 'Pretty Good',
+      description: 'Your friends and family will all be jealous of this Doodad.',
       features: {
-        fun: 'mostly',
-        dangerous: 'yes very dangerous'
+        'Fun-Level': '10',
+        Smell: 'Strawberry'
       }
     }
   }).then( (instance, created) => {
@@ -42,11 +42,11 @@ const defaultProducts = () => {
     defaults: {
       productId: uuid.v4(),
       price: 31.80,
-      description: 'what an incredible thing this is',
+      description: 'Everyone needs a Whirlygig. Everyone.',
       features: {
-        cool: 'no',
-        rare: 'very rare',
-        size: 'nine and a half meters'
+        Toxic: 'sometimes',
+        Condition: 'Mint',
+        Vintage: '2012'
       }
     }
   }).then( (instance, created) => {

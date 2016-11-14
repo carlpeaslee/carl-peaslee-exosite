@@ -18,7 +18,7 @@ class ShippingTotal extends Component {
   }
 
   calculateShippingCost = (shippingState) => {
-    switch (shippingState) {
+    switch (shippingState.toUpperCase()) {
       case 'MN': {
         return 0
       }

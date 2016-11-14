@@ -5,7 +5,8 @@ import {
   GraphQLObjectType,
   GraphQLUnionType,
   GraphQLOutputType,
-  GraphQLList
+  GraphQLList,
+  GraphQLFloat
 } from 'graphql'
 
 
@@ -20,7 +21,7 @@ const ProductType = new GraphQLObjectType({
       type: GraphQLString
     },
     price: {
-      type: GraphQLInt
+      type: GraphQLFloat
     },
     description: {
       type: GraphQLString

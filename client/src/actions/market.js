@@ -27,7 +27,6 @@ export function addProductToCart(product){
 
 export const REQUEST_NEW_ORDER = 'REQUEST_NEW_ORDER'
 export function requestNewOrder() {
-  console.log('requestNewOrder action')
   return {
     type: REQUEST_NEW_ORDER,
   }
@@ -35,7 +34,6 @@ export function requestNewOrder() {
 
 export const CONFIRM_NEW_ORDER = 'CONFIRM_NEW_ORDER'
 export function confirmNewOrder(confirmedOrder) {
-  console.log('confirmNewOrder action',confirmedOrder)
   return {
     type: CONFIRM_NEW_ORDER,
     confirmedOrder

@@ -37,9 +37,11 @@ class ReceiptContainer extends Component {
           }}
         >
 
-          <h3>Order Confirmed</h3>
-          <h4>Thanks {this.props.confirmedOrder.shippingName}!</h4>
-           <p>Your order number is {this.props.confirmedOrder.orderId}</p>
+          <h3>{this.props.confirmedOrder ? 'Order Confirmed' : null}</h3>
+          <br/>
+          <h4>{this.props.confirmedOrder.shippingName ? 'Thanks ' + this.props.confirmedOrder.shippingName : null }!</h4>
+          <br/>
+           <p>{this.props.confirmedOrder.orderId ? 'Your order number is ' + this.props.confirmedOrder.orderId  : null}</p>
         </div>
       </div>
     );

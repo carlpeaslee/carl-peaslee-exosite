@@ -64,7 +64,7 @@ const city = ({ input, label, type, meta: { touched, error, warning } }) => (
     style={{
       display: 'flex',
       flexDirection: 'column',
-      flexGrow: '2',
+      width: '66%',
       marginTop: '15px'
     }}
   >
@@ -89,12 +89,21 @@ const city = ({ input, label, type, meta: { touched, error, warning } }) => (
   </div>
 )
 
+const stateDataList = () => {
+  let list = []
+  states.forEach( (state, index) => {
+    let option = <option key={index} value={state}/>
+    list.push(option)
+  })
+  return list
+}
+
 const state = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div
     style={{
       display: 'flex',
       flexDirection: 'column',
-      flexGrow: '1',
+      width: '33%',
       marginTop: '15px'
     }}
   >
@@ -111,11 +120,17 @@ const state = ({ input, label, type, meta: { touched, error, warning } }) => (
     <input
       {...input}
       placeholder={label}
+      maxLength={2}
       type={type}
       style={{
-        width: '100%'
+        width: '100%',
+        textTransform: 'uppercase'
       }}
+      list={'stateList'}
     />
+    <datalist id='stateList'>
+      {stateDataList()}
+    </datalist>
   </div>
 )
 
@@ -141,7 +156,6 @@ class ShippingForm extends Component {
 
 
   render() {
-    console.log(this.props)
     return (
       <div
         style={{

@@ -6,7 +6,7 @@ const Product = db.define('product', {
   productId: {
     type: sequelize.UUID,
     primaryKey: true,
-    default: sequelize.UUIDV4,
+    default: sequelize.UUID,
   },
 
   title: {

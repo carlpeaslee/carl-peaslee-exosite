@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import booya from '../../styles/booya.png'
 import AddToCartButton from './AddToCartButton'
 
 import S from '../../styles/S'
@@ -63,12 +62,13 @@ class Product extends Component {
         }}
       >
         <img
-          src={booya}
+          src={this.props.image}
           alt={"An angry cat eating a banana"}
           style={{
             display: 'flex',
             width: '100%',
-            height: 'auto'
+            height: 'auto',
+            maxWidth: '300px'
           }}
         />
         <div
@@ -77,7 +77,8 @@ class Product extends Component {
             flexDirection: 'column',
             padding: '8px',
             marginBottom: 'auto',
-            minHeight: '180px'
+            minHeight: '180px',
+            maxWidth: '300px'
           }}
         >
           <div
@@ -94,9 +95,9 @@ class Product extends Component {
               {'$'+this.props.price.toFixed(2)}
             </h3>
           </div>
-          <i>
+          <p><i>
             {this.props.description}
-          </i>
+          </i></p>
 
           {this.displayFeatures()}
         </div>

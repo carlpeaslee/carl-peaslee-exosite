@@ -26,7 +26,6 @@ export function* fetchProducts() {
 }
 
 export function* newOrderCall() {
-  console.log('newOrderCall')
   try {
     const appState = store.getState()
     const form = appState.form.shipping.values

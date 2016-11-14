@@ -1,12 +1,16 @@
 import React, {Component, PropTypes} from 'react'
 import Product from './Product'
 
+import cat0 from '../../styles/cat0.png'
+import cat1 from '../../styles/cat1.png'
+import cat2 from '../../styles/cat2.png'
+
 import S from '../../styles/S'
 
 const baseStyles = {
   display: 'flex',
   alignItems: 'stretch',
-  justifyItems: 'center',
+  justifyContent: 'center',
   flexDirection: 'row',
   margin: '100px'
 }
@@ -32,10 +36,12 @@ class AllProducts extends Component {
   populateProductList() {
     if(this.props.products) {
       const products = []
-      this.props.products.forEach((product)=>{
+      const images = [cat0, cat1, cat2]
+      this.props.products.forEach((product, index)=>{
         products.push(
           <Product
             key={product.productId}
+            image={images[index]}
             product={product}
             title={product.title}
             price={product.price}
