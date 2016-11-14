@@ -16,6 +16,11 @@ class MarketContainer extends Component {
           addProductToCart={this.props.addProductToCart}
           openCart={this.props.openCart}
         />
+        <p
+          style={{
+            textAlign: 'center'
+          }}
+        >All products come with a 30-day money back guarantee.</p>
       </div>
     );
   }
