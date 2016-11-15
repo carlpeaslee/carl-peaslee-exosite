@@ -46,6 +46,7 @@ class CheckoutTotalsList extends Component {
           />
           <OrderTotal
             cart={this.props.cart}
+            shippingRate={this.props.shippingRate}
           />
         </div>
     );

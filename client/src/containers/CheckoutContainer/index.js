@@ -35,6 +35,7 @@ class CheckoutContainer extends Component {
           cart={this.props.cart}
           shippingValues={this.props.shippingValues}
           setShippingRate={this.props.setShippingRate}
+          shippingRate={this.props.shippingRate}
         />
 
 

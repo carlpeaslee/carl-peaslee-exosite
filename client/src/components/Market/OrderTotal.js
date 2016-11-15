@@ -6,12 +6,12 @@ class OrderTotal extends Component {
     this.cart = this.props.cart
     this.cartSubtotal = 0
     this.shippingRate = 5.99
-    this.orderTotal = this.calculateShippingCost(this.currentCartSubtotal, this.shippingRate)
+    this.orderTotal = this.calculateTotalWithShipping(this.currentCartSubtotal, this.shippingRate)
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if (nextProps.shippingRate) {
-      this.orderTotal = this.calculateShippingCost(this.currentCartSubtotal, nextProps.shippingRate)
+    if (nextProps.shippingRate || nextProps.shippingRate === 0) {
+      this.orderTotal = this.calculateTotalWithShipping(this.currentCartSubtotal, nextProps.shippingRate)
     }
   }
 
@@ -26,11 +26,13 @@ class OrderTotal extends Component {
     }
   }
 
-  calculateShippingCost = (subTotal, shipping) => {
+
+  calculateTotalWithShipping = (subTotal, shipping) => {
     return subTotal + shipping
   }
 
   render() {
+    console.log(this.orderTotal)
     return (
       <div
         style={{
